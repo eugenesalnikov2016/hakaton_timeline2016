@@ -39,9 +39,9 @@ PRIMARY KEY (`event_id`)) ENGINE = InnoDB';
         $sql = "INSERT INTO " . TABLE_NAME . " (`event_name`, `event_year`, `event_text`, `event_img_url`, `event_video_url`)
         VALUES ('$event_name', '$event_year', '$event_text', '$event_img_url', '$event_video_url')";
         if (mysqli_query($this->link, $sql)) {
-            echo mysqli_insert_id($this->link);
+            return true;
         } else {
-            echo 'error!';
+            return false;
         }
     }
 
