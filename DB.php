@@ -52,21 +52,6 @@ PRIMARY KEY (`event_id`)) ENGINE = InnoDB';
         while ($row = mysqli_fetch_assoc($result)) {
             var_dump($row);
         }
-
-    }
-
-    public function update()
-    {
-        $sql = 'UPDATE ' . TABLE_NAME . ' SET 
-        ``
-        
-        
-        ';
-    }
-
-    public function delete()
-    {
-        //
     }
 
 
