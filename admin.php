@@ -1,7 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: notebook
- * Date: 02.04.2016
- * Time: 15:51
- */
+
+
+require_once 'DB.php';
+
+$test = new DB();
+
+/*$test->insert('test name',
+    '2015',
+    'test text',
+    'img url',
+    'video url'
+    )
+;*/
+
+
+$test->select();
