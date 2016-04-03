@@ -63,7 +63,7 @@ if ($tag == 'div') {
 
     <?php if (!empty($events)): ?>
         <div class="content">
-            <a class="add-link" href="admin.php">+</a>
+            <a class="add-link" href="admin.php"></a>
             <?php foreach ($events as $event): ?>
                 <div class="contents" style="background-image: url(<?= $event['event_img_url'] ?>);
                     background-position: 50% 50%;
@@ -84,7 +84,7 @@ if ($tag == 'div') {
         <div class="content" style="background-image: url(images/title.png);
         background-position: 50% 50%;
         background-size: cover;">
-            <a class="add-link" href="admin.php">+</a>
+            <a class="add-link" href="admin.php"></a>
             <div class="contenttext">
                 <h1>Рождение Вселенной</h1>
                 <p>По современным представлениям, наблюдаемая нами сейчас Вселенная возникла 13,7 млрд лет назад из
@@ -103,6 +103,7 @@ if ($tag == 'div') {
         echo '<div class="content" style="background-image: url(' . $row['event_img_url'] . ');
         background-position: 50% 50%;
         background-size: cover;">
+            <a class="add-link" href="admin.php"></a>
             <div class="contenttext">
                 <h1>' . $row['event_name'] . '</h1>
                 <p>' . $row['event_text'] . '</p>
