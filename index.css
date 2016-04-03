@@ -1,0 +1,257 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: helvetica;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*ДОБАВЛЕНИЕ*/
+
+.plus
+{
+	width: 29px;
+	height: 29px;
+	opacity: 0.25;
+	position: fixed;
+	right: 70px;
+	top:40px;
+	background-color: white;
+	transition: 0.25s linear;
+}
+
+.plus:hover
+{
+	cursor: pointer;
+	opacity: 1;
+}
+
+.vertical
+{
+	width: 4px;
+	height: 24px;
+	background-color: black;
+	position: absolute;
+	left: 12.5px;
+	top: 2.5px;
+}
+
+.horizontal
+{
+	height: 4px;
+	width: 24px;
+	background-color: black	;
+	position: absolute;
+	left: 2.5px;
+	top: 12.5px;
+}
+
+/*КОНТЕНТ*/
+
+.content/*ОСНОВНОЙ БЛОК, КОТОРЫЙ ЗАПОЛНЯЕТ ИЗОБРАЖЕНИЕ, В КОТОРОМ НАХОДИТСЯ ТЕКСТОВОЕ ОПИСАНИЕ*/
+{
+	margin-left: 60px;
+	margin-right: 60px;
+	margin-top: 20px;
+	/*margin-bottom: 120px;*/	
+	background-color: gray;
+	height: 600px;
+	border: solid black 1px;
+	box-sizing: border-box;
+}
+
+.contenttext/*ТЕКСТОВОЕ ОПИСАНИЕ*/
+{
+	width:314px;
+	max-height: 400px;
+	overflow: auto;
+	background-color: white;
+	margin-left: 60%;
+	margin-top: 50px;
+	opacity: 0.85;
+	text-align: left;
+	font-family: Helvetica;
+	font-size: 14pt;
+	line-height: 1.3;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.contenttext h1/*ЗАГОЛОВОК*/
+{
+	text-align: center;
+	font-size: 18pt;
+	line-height: 1.5;
+}
+
+.none
+{
+	height: 185px;
+	margin-left: 60px;
+	margin-right: 60px;
+	margin-top: 20px;	
+}
+
+/*НАВИГАЦИЯ*/
+
+.down/*ВСЯ НИЖНЯЯ ЧАСТЬ*/
+{
+	height: 185px;
+	background-color: white;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+
+#crumbs ul li a/*Хлебные крошки - начало*/
+{
+    display: block;
+    float: left;
+    height: 20px;
+    background: lightgray;
+    text-align: center;
+    padding: 10px 20px 0 20px;
+    position: relative;
+    margin: 0 8px 0 0;     
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+    margin-top: 0px;
+    left: 60px;
+}
+
+#crumbs ul li
+{
+        list-style:none;
+}
+
+#crumbs ul li:first-child a 
+{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#crumbs ul li:first-child a:before 
+{
+    display: none; 
+} 
+
+#crumbs ul li:last-child a 
+{
+    padding-right: 15px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+#crumbs ul li:last-child a:after 
+{
+    display: none; 
+}
+
+#crumbs ul li a:hover 
+{
+    background: gray;
+}
+
+#crumbs ul li a:hover:after 
+{
+    border-left-color: gray;
+}							/*Хлебные крошки конец*/
+
+
+/*ТАЙМЛАЙН*/
+.timeline/*БЛОК ТАЙМЛАЙНА*/
+{
+	margin-left: 60px;
+	margin-right: 60px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	position: fixed;
+	bottom: 0px;
+}
+
+.timelinetable/*ТАБЛИЦА ТАЙМЛАЙНА*/
+{
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;	
+}
+
+.timelinetable td 
+{
+		width: 50%;
+		border: 1px solid #333;
+}
+
+
+.timelineblock/*БЛОК ТАЙМЛАЙНА (КАРТИНКА+НАДПИСЬ)х10/х5*/
+{
+	height: 64px;
+	transition: 0.15s linear;
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+
+.timelineblock:before
+{
+	content: "";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;	
+}
+
+.timelineblock:hover
+{
+	transform: scale(1.15);	
+}
+
+
+
+.text/*ТЕКСТ НА КАРТИНКЕ*/
+{
+	color:white;
+	display: inline-block;
+	vertical-align: middle;
+	font-family: Helvetica;
+	font-size: 11pt;
+}
