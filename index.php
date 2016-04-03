@@ -149,7 +149,7 @@ if ($tag == 'div') {
                             <div class="timelineblock"
                                  style="background-image: url('images/<?= ($i + 1) ?>.png'); background-position: 50% 50%; background-size: cover; ">
                                 <div class="text">
-                                    <a href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= Helper::bd_nice_number($array[$i]['start']) . ' - ' . Helper::bd_nice_number($array[$i]['end']) ?></a>
+                                    <a href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= Helper::bd_nice_number($array[$i]['start']) . ' — ' . Helper::bd_nice_number($array[$i]['end']) ?></a>
                                 </div>
 
                             </div>
@@ -166,9 +166,9 @@ if ($tag == 'div') {
                             <div class="timelineblock <?if ($tag !== 'a') { echo 'nolink'; }?>" style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;">
                                 <div class="text">
                                     <? if ($tag == 'a'): ?>
-                                        <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= Helper::bd_nice_number($i) . ' - ' . Helper::bd_nice_number($i + $section_count) ?></a>
+                                        <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= Helper::bd_nice_number($i) . ' — ' . Helper::bd_nice_number($i + $section_count) ?></a>
                                     <? else: ?>
-                                        <a><?= $i . ' - ' . ($i + $section_count) ?></a>
+                                        <a><?= Helper::bd_nice_number($i) . ' — ' . Helper::bd_nice_number($i + $section_count) ?></a>
                                     <? endif; ?>
                                 </div>
                             </div>
