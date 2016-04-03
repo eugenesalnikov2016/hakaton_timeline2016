@@ -66,36 +66,55 @@ if ($tag == 'div') {
 }
 ?>
 
+<?php if (!isset($_REQUEST['id'])): ?>
 
+    <?php if (!empty($events)): ?>
+        <div class="content">
+            <?php foreach ($events as $event): ?>
+                <div class="contents" style="background-image: url(<?= $event['event_img_url'] ?>);
+                    background-position: 50% 50%;
+                    background-size: cover;">
+                    <div class="contenttx">
+                        <div class="contenttext">
+                            <h1><?= $event['event_name'] ?></h1>
 
-<?php if (!empty($events)): ?>
-    <div class="content">
-        <?php foreach ($events as $event): ?>
-            <div class="contents" style="background-image: url(<?= $event['event_img_url'] ?>);
-                background-position: 50% 50%;
-                background-size: cover;">
-                <div class="contenttx">
-                    <div class="contenttext">
-                        <h1><?= $event['event_name'] ?></h1>
-                        <p><?= $event['event_text'] ?></p>
+                            <a href="index.php?id=<?= $event['event_id'] ?>"><p><?= $event['event_text_short'] ?></p>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        <?php endforeach; ?>
-    </div>
-<?php else: ?>
-    <div class="content" style="background-image: url(images/title.png);
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <div class="content" style="background-image: url(images/title.png);
         background-position: 50% 50%;
         background-size: cover;">
-        <div class="contenttext">
-            <h1>Рождение Вселенной</h1>
-            <p>По современным представлениям, наблюдаемая нами сейчас Вселенная возникла 13,7 млрд лет назад из
-                некоторого начального сингулярного состояния и с тех пор непрерывно расширяется и охлаждается. В
-                результате расширения и охлаждения во Вселенной произошли фазовые переходы, аналогичные конденсации
-                жидкости из газа, но применительно к элементарным частицам.</p>
+            <div class="contenttext">
+                <h1>Рождение Вселенной</h1>
+                <p>По современным представлениям, наблюдаемая нами сейчас Вселенная возникла 13,7 млрд лет назад из
+                    некоторого начального сингулярного состояния и с тех пор непрерывно расширяется и охлаждается. В
+                    результате расширения и охлаждения во Вселенной произошли фазовые переходы, аналогичные конденсации
+                    жидкости из газа, но применительно к элементарным частицам.</p>
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
+
+<?php else: ?>
+    <?php
+    $sql = "SELECT * FROM `events` WHERE `event_id` = {$_REQUEST['id']}";
+    $result = mysqli_query($db->link, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="content" style="background-image: url(' . $row['event_img_url'] . ');
+        background-position: 50% 50%;
+        background-size: cover;">
+            <div class="contenttext">
+                <h1>' . $row['event_name'] . '</h1>
+                <p>' . $row['event_text'] . '</p>
+            </div>
+        </div>';
+    }
+    ?>
 <?php endif; ?>
 
 

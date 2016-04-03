@@ -34,7 +34,11 @@ if (!empty($_REQUEST)) {
         $success = false;
     }
     if (empty($event_text)) {
-        $status['event_text'] = 'Текст не может быть пустым!';
+        $status['event_text'] = 'Описание не может быть пустым!';
+        $success = false;
+    }
+    if (empty($event_text_short)) {
+        $status['event_text'] = 'Краткое описание не может быть пустым!';
         $success = false;
     }
 
@@ -53,13 +57,13 @@ if (!empty($_REQUEST)) {
             $result .= 'Ошибка при загрузке изображения';
         }
     } else {
-        $status['event_img_url'] = 'Image is empty';
+        $status['event_img_url'] = 'Изображение не может быть пустым!';
     }
 
     if ($success) {
         $db = new DB;
 
-        if ($db->insert($event_name, $event_year, $event_text, $event_img_url, 'https://' . $event_video_url)) {
+        if ($db->insert($event_name, $event_year, $event_text, $event_text_short, $event_img_url, 'https://' . $event_video_url)) {
             $result = 'Событие успешно добавлено';
         } else {
             $result = 'Произошла ошибка при добавлении события';
@@ -131,6 +135,16 @@ if (!empty($_REQUEST)) {
 
         <div class="row">
             <div class="small-3 columns">
+                <label for="middle-label" class="text-right middle">Краткое описание</label>
+            </div>
+            <div class="small-9 columns">
+                <textarea name="event_text_short" rows="10" cols="15" id="middle-label"
+                          required><?= $event_text_short ?></textarea><?= $status['event_text_short'] ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-3 columns">
                 <label for="middle-label" class="text-right middle">Изображение</label>
             </div>
             <div class="small-9 columns">
@@ -151,7 +165,7 @@ if (!empty($_REQUEST)) {
 
         <div class="text-center">
             <input type="submit" name="submit" value="Отправить" class="button" id="middle-label">
-            
+
         </div>
 
     </form>
