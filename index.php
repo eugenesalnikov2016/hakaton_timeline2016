@@ -118,25 +118,24 @@ if ($tag == 'div') {
 <?php endif; ?>
 
 
-<div class="none"></div>
 
 <!-- НАВИГАЦИЯ -->
 
 <div class="down">
 
-    <div id="crumbs">
-        <ul>
-            <li>
-                <a href="index.php">История времен</a>
-            </li>
-            <li>
-                <a onclick="window.history.back();">Назад</a>
-            </li>
-
-        </ul>
-    </div>
 
     <div class="timeline">
+        <div id="crumbs">
+            <ul>
+                <li>
+                    <a href="index.php">История времен</a>
+                </li>
+                <li>
+                    <a onclick="window.history.back();">Назад</a>
+                </li>
+
+            </ul>
+        </div>
 
         <table class="timelinetable">
 
@@ -150,8 +149,7 @@ if ($tag == 'div') {
                             <div class="timelineblock"
                                  style="background-image: url('images/<?= ($i + 1) ?>.png'); background-position: 50% 50%; background-size: cover; ">
                                 <div class="text">
-                                    <a
-                                        href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= Helper::bd_nice_number($array[$i]['start']) . ' - ' . Helper::bd_nice_number($array[$i]['end']) ?></a>
+                                    <a href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= Helper::bd_nice_number($array[$i]['start']) . ' - ' . Helper::bd_nice_number($array[$i]['end']) ?></a>
                                 </div>
 
                             </div>
@@ -165,13 +163,12 @@ if ($tag == 'div') {
                                $i < $end;
                                $i = $i + $section_count, $k++): ?>
                         <td>
-                            <div class="timelineblock"
-                                 style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;">
+                            <div class="timelineblock <?if ($tag !== 'a') { echo 'nolink'; }?>" style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;">
                                 <div class="text">
                                     <? if ($tag == 'a'): ?>
                                         <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= Helper::bd_nice_number($i) . ' - ' . Helper::bd_nice_number($i + $section_count) ?></a>
                                     <? else: ?>
-                                        <div><?= $i . ' - ' . ($i + $section_count) ?></div>
+                                        <a><?= $i . ' - ' . ($i + $section_count) ?></a>
                                     <? endif; ?>
                                 </div>
                             </div>
