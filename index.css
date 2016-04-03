@@ -7,45 +7,52 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
+
 html {
-    min-height:100%;
+    min-height: 100%;
 }
+
 body {
-	line-height: 1;
-	font-family: helvetica;
+    line-height: 1;
+    font-family: helvetica;
     height: 100vh;
     overflow: hidden;
 }
+
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
+
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+    content: '';
+    content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 /*ДОБАВЛЕНИЕ*/
@@ -59,18 +66,27 @@ table {
     text-decoration: none;
     right: 10px;
     top: 10px;
-    opacity:0.5;
+    opacity: 0.5;
     background: mediumseagreen;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -ms-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
     transition: opacity 0.2s;
     z-index: 1;
 
 }
+
 .add-link:before, .add-link:after {
-    content:'';
+    content: '';
     position: absolute;
     background-color: darkgreen;
     left: 50%;
     top: 50%;
+    -webkit-transition: transform 0.4s;
+    -moz-transition: transform 0.4s;
+    -ms-transition: transform 0.4s;
+    -o-transition: transform 0.4s;
     transition: transform 0.4s;
 }
 
@@ -93,20 +109,29 @@ table {
 }
 
 .add-link:hover:before {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
     transform: rotate(360deg);
 }
+
 .add-link:hover:after {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
     transform: rotate(360deg);
 }
 
 /*КОНТЕНТ*/
 
-.content/*ОСНОВНОЙ БЛОК, КОТОРЫЙ ЗАПОЛНЯЕТ ИЗОБРАЖЕНИЕ, В КОТОРОМ НАХОДИТСЯ ТЕКСТОВОЕ ОПИСАНИЕ*/
+.content /*ОСНОВНОЙ БЛОК, КОТОРЫЙ ЗАПОЛНЯЕТ ИЗОБРАЖЕНИЕ, В КОТОРОМ НАХОДИТСЯ ТЕКСТОВОЕ ОПИСАНИЕ*/
 {
-	margin-left: 60px;
-	margin-right: 60px;
-	/*margin-bottom: 120px;*/
-	box-sizing: border-box;
+    margin-left: 60px;
+    margin-right: 60px;
+    /*margin-bottom: 120px;*/
+    box-sizing: border-box;
     position: relative;
     height: calc(100% - 220px);
     margin-bottom: 200px;
@@ -114,91 +139,106 @@ table {
     overflow-y: auto;
 }
 
-.contenttext/*ТЕКСТОВОЕ ОПИСАНИЕ*/
+.contenttext /*ТЕКСТОВОЕ ОПИСАНИЕ*/
 {
-	width:100%;
-	max-height: 300px;
-	overflow: auto;
-	background-color: white;
-	opacity: 0.85;
-	text-align: left;
-	font-family: Helvetica;
-	font-size: 14pt;
-	line-height: 1.3;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	box-sizing: border-box;
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+    background-color: white;
+    opacity: 0.85;
+    text-align: left;
+    font-family: Helvetica;
+    font-size: 14pt;
+    line-height: 1.3;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
 }
 
-.contenttext h1/*ЗАГОЛОВОК*/
+.contenttext h1 /*ЗАГОЛОВОК*/
 {
-	text-align: center;
-	font-size: 18pt;
-	line-height: 1.5;
+    text-align: center;
+    font-size: 18pt;
+    line-height: 1.5;
 }
 
-.contenttexthead/*ТЕКСТОВОЕ ОПИСАНИЕ*/
+.contenttexthead /*ТЕКСТОВОЕ ОПИСАНИЕ*/
 {
-	width:35%;
-	max-height: 400px;
-	overflow: auto;
-	background-color: white;
-	opacity: 0.85;
-	text-align: left;
-	font-family: Helvetica;
-	font-size: 14pt;
-	line-height: 1.3;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	box-sizing: border-box;
-	margin-top: 5%;
-	margin-left: 60%;
+    width: 35%;
+    max-height: 400px;
+    overflow: auto;
+    background-color: white;
+    opacity: 0.85;
+    text-align: left;
+    font-family: Helvetica;
+    font-size: 14pt;
+    line-height: 1.3;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 5%;
+    margin-left: 60%;
 }
 
-.contenttexthead h1/*ЗАГОЛОВОК*/
+.contenttexthead h1 /*ЗАГОЛОВОК*/
 {
-	text-align: center;
-	font-size: 18pt;
-	line-height: 1.5;
+    text-align: center;
+    font-size: 18pt;
+    line-height: 1.5;
 }
 
-.none
-{
-	height: 185px;
-	margin-left: 60px;
-	margin-right: 60px;
-	margin-top: 20px;	
+.none {
+    height: 185px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 20px;
 }
-.contents
-{
-	width: 50%;
-	height: 300px;
-	border: solid black 1px;
-	box-sizing: border-box;
-	float: left;
+
+.contents {
+    width: 50%;
+    height: 300px;
+    border: solid black 1px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
     overflow: hidden;
 
 }
-.contents:hover .contenttx
-{
-	visibility: visible;
-	opacity: 0.8;
+
+.contents:hover .contenttx {
+    visibility: visible;
+    opacity: 0.8;
+    -webkit-transform: translateY(0) scale(1);
+    -moz-transform: translateY(0) scale(1);
+    -ms-transform: translateY(0) scale(1);
+    -o-transform: translateY(0) scale(1);
     transform: translateY(0) scale(1);
 }
-.contenttx
-{
+
+.contenttx {
     display: block;
     width: 100%;
-	height: 300px;
-	background-color: white;
-	visibility: hidden;
-	opacity: 0;
+    height: 300px;
+    background-color: white;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transform: translateY(50px) scale(0.8);
+    -moz-transform: translateY(50px) scale(0.8);
+    -ms-transform: translateY(50px) scale(0.8);
+    -o-transform: translateY(50px) scale(0.8);
     transform: translateY(50px) scale(0.8);
-	transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
+    -webkit-transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
+    -moz-transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
+    -ms-transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
+    -o-transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
+    transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
 
 }
 
@@ -206,19 +246,16 @@ table {
     color: #0a0a0a;
     text-decoration: none;
 }
-.contenttx:active
-{
-	background-color: lightgray;
-}
+
 /*НАВИГАЦИЯ*/
 
-.down/*ВСЯ НИЖНЯЯ ЧАСТЬ*/
+.down /*ВСЯ НИЖНЯЯ ЧАСТЬ*/
 {
-	height: 185px;
-	background-color: white;
-	position: fixed;
-	bottom: 0px;
-	width: 100%;
+    height: 185px;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 #crumbs {
@@ -226,10 +263,9 @@ table {
     background: #fff;
     padding-top: 10px;
 
-
 }
 
-#crumbs ul li a/*Хлебные крошки - начало*/
+#crumbs ul li a /*Хлебные крошки - начало*/
 {
     display: block;
     height: 20px;
@@ -237,117 +273,119 @@ table {
     text-align: center;
     padding: 10px 20px 0 20px;
     position: relative;
-    margin: 0 8px 0 0;     
+    margin: 0 8px 0 0;
     font-size: 13px;
     text-decoration: none;
     color: black;
 }
 
-#crumbs ul li
-{
+#crumbs ul li {
     display: inline-block;
     vertical-align: middle;
-        list-style:none;
+    list-style: none;
 }
 
-#crumbs ul li:first-child a 
-{
+#crumbs ul li:first-child a {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
 
-#crumbs ul li:first-child a:before 
-{
-    display: none; 
-} 
+#crumbs ul li:first-child a:before {
+    display: none;
+}
 
-#crumbs ul li:last-child a 
-{
+#crumbs ul li:last-child a {
     padding-right: 15px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
 
-#crumbs ul li:last-child a:after 
-{
-    display: none; 
+#crumbs ul li:last-child a:after {
+    display: none;
 }
 
-#crumbs ul li a:hover 
-{
+#crumbs ul li a:hover {
     background: gray;
 }
 
-#crumbs ul li a:hover:after 
-{
+#crumbs ul li a:hover:after {
     border-left-color: gray;
-}							/*Хлебные крошки конец*/
+}
 
+/*Хлебные крошки конец*/
 
 /*ТАЙМЛАЙН*/
-.timeline/*БЛОК ТАЙМЛАЙНА*/
+.timeline /*БЛОК ТАЙМЛАЙНА*/
 {
-	margin-left: 60px;
-	margin-right: 60px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	position: fixed;
-	bottom: 0px;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: fixed;
+    bottom: 0px;
 }
 
-.timelinetable/*ТАБЛИЦА ТАЙМЛАЙНА*/
+.timelinetable /*ТАБЛИЦА ТАЙМЛАЙНА*/
 {
-	width: 100%;
-	table-layout: fixed;
-	border-collapse: collapse;	
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
 }
 
-.timelinetable td 
-{
-		width: 50%;
-		border: 1px solid #333;
+.timelinetable td {
+    width: 50%;
+    border: 1px solid #333;
 }
 
-
-.timelineblock/*БЛОК ТАЙМЛАЙНА (КАРТИНКА+НАДПИСЬ)х10/х5*/
+.timelineblock /*БЛОК ТАЙМЛАЙНА (КАРТИНКА+НАДПИСЬ)х10/х5*/
 {
-	height: 64px;
-	transition: 0.15s linear;
-	background-color: black;
-	color: white;
-	text-align: center;
+    height: 64px;
+    -webkit-transition: transform 0.15s;
+    -moz-transition: transform 0.15s;
+    -ms-transition: transform 0.15s;
+    -o-transition: transform 0.15s;
+    transition: transform 0.15s;
+    background-color: black;
+    color: white;
+    text-align: center;
     font-size: 0;
 }
 
-.timelineblock:before
-{
-	content: "";
-	display: inline-block;
-	height: 100%;
-	vertical-align: middle;	
+.timelineblock:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
-.timelineblock:hover
-{
-	transform: scale(1.15);
+.timelineblock:hover {
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    -o-transform: scale(1.15);
+    transform: scale(1.15);
     cursor: pointer;
 }
 
 .timelineblock.nolink:hover {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
     transform: none;
     cursor: default;
 }
 
-.text/*ТЕКСТ НА КАРТИНКЕ*/
+.text /*ТЕКСТ НА КАРТИНКЕ*/
 {
-	display: inline-block;
-	vertical-align: middle;
-	font-family: Helvetica;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: Helvetica;
     line-height: normal;
 }
 
 .text a {
-    color:white;
+    color: white;
     font-size: 18px;
     line-height: 18px;
     text-decoration: none;
