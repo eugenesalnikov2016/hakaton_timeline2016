@@ -45,6 +45,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
     <link href="index.css" rel="stylesheet">
     <meta charset="utf-8">
+    <link rel="stylesheet" href="animate.css">
+    <script src="wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
     <title>Timeline</title>
 </head>
 <body>
@@ -117,6 +122,7 @@ if ($tag == 'div') {
 
             if (!empty($random_numbers)) {
                 echo '<div class="content">';
+                $rrr = 0;
                 foreach ($random_numbers as $number) {
                     $sql = "SELECT * FROM `events` WHERE `event_id` = $number";
 
@@ -124,9 +130,7 @@ if ($tag == 'div') {
                     while ($row = mysqli_fetch_assoc($result)) {
                         ?>
 
-                        <div class="contents" style="background-image: url(<?= $row['event_img_url'] ?>);
-                            background-position: 50% 50%;
-                            background-size: cover;">
+                        <div class="contents wow fadeInLeft" data-wow-delay="<?=$rrr*0.05?>s" style="background-image: url(<?= $row['event_img_url'] ?>); background-position: 50% 50%; background-size: cover;">
                             <a href="index.php?id=<?= $row['event_id'] ?>" class="contenttx">
                                 <div class="contenttext">
                                     <h1><?= $row['event_name'] ?></h1>
@@ -137,6 +141,7 @@ if ($tag == 'div') {
                         </div>
                         <?php
 
+                        $rrr++;
 
                     }
                 }
@@ -242,7 +247,7 @@ if ($tag == 'div') {
                                $i++): ?>
 
                         <td>
-                            <div class="timelineblock"
+                            <div class="timelineblock wow fadeInUp" data-wow-delay="<?=$i*0.05?>s"
                                  style="background-image: url('images/<?= ($i + 1) ?>.png'); background-position: 50% 50%; background-size: cover; ">
                                 <div class="text">
                                     <a href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= Helper::bd_nice_number($array[$i]['start']) . ' — ' . Helper::bd_nice_number($array[$i]['end']) ?></a>
@@ -259,10 +264,10 @@ if ($tag == 'div') {
                                $i < $end;
                                $i = $i + $section_count, $k++): ?>
                         <td>
-                            <div class="timelineblock <? if ($tag !== 'a') {
+                            <div class="timelineblock wow fadeInUp <? if ($tag !== 'a') {
                                 echo 'nolink';
                             } ?>"
-                                 style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;">
+                                 style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;" data-wow-delay="<?=$k*0.05?>s">
                                 <div class="text">
                                     <? if ($tag == 'a'): ?>
                                         <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= Helper::bd_nice_number($i) . ' — ' . Helper::bd_nice_number($i + $section_count) ?></a>

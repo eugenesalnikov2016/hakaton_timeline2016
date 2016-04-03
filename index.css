@@ -137,6 +137,7 @@ table {
     margin-bottom: 200px;
     margin-top: 20px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .contenttext /*ТЕКСТОВОЕ ОПИСАНИЕ*/
@@ -334,7 +335,6 @@ table {
 
 .timelinetable td {
     width: 50%;
-    border: 1px solid #333;
 }
 
 .timelineblock /*БЛОК ТАЙМЛАЙНА (КАРТИНКА+НАДПИСЬ)х10/х5*/
