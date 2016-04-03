@@ -107,6 +107,7 @@ if ($tag == 'div') {
     <div id="crumbs">
         <ul>
             <li><a href="index.php">История времен</a></li>
+            <li><a onclick="window.history.back();">Назад</a></li>
 
         </ul>
     </div>
