@@ -23,9 +23,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html {
+    min-height:100%;
+}
 body {
 	line-height: 1;
 	font-family: helvetica;
+    height: 100vh;
+    overflow: hidden;
 }
 ol, ul {
 	list-style: none;
@@ -45,43 +50,26 @@ table {
 
 /*ДОБАВЛЕНИЕ*/
 
-.plus
-{
-	width: 29px;
-	height: 29px;
-	opacity: 0.25;
-	position: fixed;
-	right: 70px;
-	top:40px;
-	background-color: white;
-	transition: 0.25s linear;
-	z-index: 2;
+.add-link {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    line-height: 24px;
+    font-size: 40px;
+    color: darkgreen;
+    text-align: center;
+    text-decoration: none;
+    right: 10px;
+    top: 10px;
+    opacity:0.5;
+    background: mediumseagreen;
+    transition: opacity 0.2s;
+    z-index: 1;
 }
 
-.plus:hover
-{
-	cursor: pointer;
-	opacity: 1;
-}
-
-.vertical
-{
-	width: 4px;
-	height: 24px;
-	background-color: black;
-	position: absolute;
-	left: 12.5px;
-	top: 2.5px;
-}
-
-.horizontal
-{
-	height: 4px;
-	width: 24px;
-	background-color: black	;
-	position: absolute;
-	left: 2.5px;
-	top: 12.5px;
+.add-link:hover {
+    opacity: 1;
 }
 
 /*КОНТЕНТ*/
@@ -90,14 +78,12 @@ table {
 {
 	margin-left: 60px;
 	margin-right: 60px;
-	margin-top: 20px;
-	/*margin-bottom: 120px;*/	
-	background-color: gray;
-	height: 600px;
-	border: solid black 1px;
+	/*margin-bottom: 120px;*/
 	box-sizing: border-box;
-
-
+    position: relative;
+    height: calc(100% - 220px);
+    margin-bottom: 200px;
+    margin-top: 20px;
 }
 
 .contenttext/*ТЕКСТОВОЕ ОПИСАНИЕ*/
