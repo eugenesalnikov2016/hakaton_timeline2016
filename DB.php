@@ -8,6 +8,7 @@ class DB
     private $db;
     private $user;
     private $password;
+    public $link;
 
     public function __construct()
     {
@@ -20,17 +21,6 @@ class DB
         or die('error');
 
         mysqli_query($this->link, "set names 'utf8'");
-
-        $sql = 'CREATE TABLE IF NOT EXISTS `' . TABLE_NAME . '` ( 
-`event_id` INT(10) NOT NULL AUTO_INCREMENT , 
-`event_name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
-`event_year` BIGINT NOT NULL , 
-`event_text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
-`event_img_url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
-`event_video_url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
-PRIMARY KEY (`event_id`)) ENGINE = InnoDB';
-        mysqli_query($this->link, $sql);
-
 
     }
 
@@ -45,13 +35,15 @@ PRIMARY KEY (`event_id`)) ENGINE = InnoDB';
         }
     }
 
-    public function select()
+    public function select($id)
     {
-        $sql = 'SELECT * FROM ' . TABLE_NAME;
+        $sql = 'SELECT * FROM ' . TABLE_NAME . 'WHERE `id` = ' . $id;
         $result = mysqli_query($this->link, $sql);
+        $array = [];
         while ($row = mysqli_fetch_assoc($result)) {
-            var_dump($row);
+            array_push($array, $row);
         }
+        return $array;
     }
 
 
