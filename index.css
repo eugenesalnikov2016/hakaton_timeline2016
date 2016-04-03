@@ -55,6 +55,7 @@ table {
 	top:40px;
 	background-color: white;
 	transition: 0.25s linear;
+	z-index: 2;
 }
 
 .plus:hover
@@ -95,16 +96,16 @@ table {
 	height: 600px;
 	border: solid black 1px;
 	box-sizing: border-box;
+
+
 }
 
 .contenttext/*ТЕКСТОВОЕ ОПИСАНИЕ*/
 {
-	width:314px;
-	max-height: 400px;
+	width:100%;
+	max-height: 300px;
 	overflow: auto;
 	background-color: white;
-	margin-left: 60%;
-	margin-top: 50px;
 	opacity: 0.85;
 	text-align: left;
 	font-family: Helvetica;
@@ -114,6 +115,7 @@ table {
 	padding-right: 15px;
 	padding-top: 15px;
 	padding-bottom: 15px;
+	box-sizing: border-box;
 }
 
 .contenttext h1/*ЗАГОЛОВОК*/
@@ -130,7 +132,34 @@ table {
 	margin-right: 60px;
 	margin-top: 20px;	
 }
+.contents
+{
+	width: 50%;
+	height: 300px;
+	border: solid black 1px;
+	box-sizing: border-box;
+	float: left;
+	
 
+}
+.contents:hover .contenttx
+{
+	visibility: visible;
+	opacity: 0.8;
+}
+.contenttx
+{
+	width: 100%;
+	height: 300px;
+	background-color: white;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.3s linear, opacity 0.4s linear;
+}
+.contenttx:active
+{
+	background-color: lightgray;
+}
 /*НАВИГАЦИЯ*/
 
 .down/*ВСЯ НИЖНЯЯ ЧАСТЬ*/
