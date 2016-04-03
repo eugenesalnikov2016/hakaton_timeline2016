@@ -19,10 +19,10 @@ $event_video_url = $_REQUEST['event_video_url'];
 
 
 if (!empty($_REQUEST)) {
-    $event_name = Helper::process($_REQUEST['event_name']);
-    $event_text = Helper::process($_REQUEST['event_text']);
+    $event_name = $_REQUEST['event_name'];
+    $event_text = $_REQUEST['event_text'];
     $event_year = $_REQUEST['event_year'];
-
+    $event_text_short = $_REQUEST['event_text_short'];
 
     $success = true;
     if (empty($event_name)) {
@@ -38,13 +38,13 @@ if (!empty($_REQUEST)) {
         $success = false;
     }
     if (empty($event_text_short)) {
-        $status['event_text'] = 'Краткое описание не может быть пустым!';
+        $status['event_text_short'] = 'Краткое описание не может быть пустым!';
         $success = false;
     }
 
 
-    if (empty($event_video_url) || !preg_match('/[-а-яa-z0-9_\.]{2,}\.(рф|[a-z]{2,6})/', $event_video_url)) {
-        $status['event_video_url'] = 'Адрес видео не может быть пустым!';
+    if (!empty($event_video_url) && !preg_match('/[-а-яa-z0-9_\.]{2,}\.(рф|[a-z]{2,6})/', $event_video_url)) {
+        $status['event_video_url'] = 'Некорректный адрес видео!';
         $success = false;
     }
 
