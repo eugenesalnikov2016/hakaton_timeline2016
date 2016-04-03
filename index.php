@@ -72,17 +72,15 @@ if ($tag == 'div') {
         <div class="content">
             <a class="add-link" href="admin.php"></a>
             <?php foreach ($events as $event): ?>
-                <div class="contents" style="background-image: url(<?= $event['event_img_url'] ?>);
-                    background-position: 50% 50%;
-                    background-size: cover;">
-                    <div class="contenttx">
+                <div class="contents" style="background-image: url(<?= $event['event_img_url'] ?>); background-position: 50% 50%; background-size: cover;">
+                    <a href="index.php?id=<?= $event['event_id'] ?>" class="contenttx">
                         <div class="contenttext">
                             <h1><?= $event['event_name'] ?></h1>
 
-                            <a href="index.php?id=<?= $event['event_id'] ?>"><p><?= $event['event_text_short'] ?></p>
-                            </a>
+                            <p><?= $event['event_text_short'] ?></p>
+
                         </div>
-                    </div>
+                    </a>
                 </div>
 
             <?php endforeach; ?>
