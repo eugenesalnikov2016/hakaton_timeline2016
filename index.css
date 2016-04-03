@@ -198,10 +198,17 @@ table {
 	width: 100%;
 }
 
+#crumbs {
+    padding-bottom: 10px;
+    background: #fff;
+    padding-top: 10px;
+
+
+}
+
 #crumbs ul li a/*Хлебные крошки - начало*/
 {
     display: block;
-    float: left;
     height: 20px;
     background: lightgray;
     text-align: center;
@@ -211,12 +218,12 @@ table {
     font-size: 13px;
     text-decoration: none;
     color: black;
-    margin-top: 0px;
-    left: 60px;
 }
 
 #crumbs ul li
 {
+    display: inline-block;
+    vertical-align: middle;
         list-style:none;
 }
 
@@ -286,6 +293,7 @@ table {
 	background-color: black;
 	color: white;
 	text-align: center;
+    font-size: 0;
 }
 
 .timelineblock:before
@@ -298,16 +306,26 @@ table {
 
 .timelineblock:hover
 {
-	transform: scale(1.15);	
+	transform: scale(1.15);
+    cursor: pointer;
 }
 
-
+.timelineblock.nolink:hover {
+    transform: none;
+    cursor: default;
+}
 
 .text/*ТЕКСТ НА КАРТИНКЕ*/
 {
-	color:white;
 	display: inline-block;
 	vertical-align: middle;
 	font-family: Helvetica;
-	font-size: 11pt;
+    line-height: normal;
+}
+
+.text a {
+    color:white;
+    font-size: 18px;
+    line-height: 18px;
+    text-decoration: none;
 }
