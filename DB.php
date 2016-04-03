@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
 class DB
 {
@@ -24,10 +24,10 @@ class DB
 
     }
 
-    public function insert($event_name, $event_year, $event_text, $event_img_url, $event_video_url)
+    public function insert($event_name, $event_year, $event_text, $event_text_short, $event_img_url, $event_video_url)
     {
-        $sql = "INSERT INTO " . TABLE_NAME . " (`event_name`, `event_year`, `event_text`, `event_img_url`, `event_video_url`)
-        VALUES ('$event_name', '$event_year', '$event_text', '$event_img_url', '$event_video_url')";
+        $sql = "INSERT INTO " . TABLE_NAME . " (`event_name`, `event_year`, `event_text`, `$event_text_short`, `event_img_url`, `event_video_url`)
+        VALUES ('$event_name', '$event_year', '$event_text', '$event_text_short', '$event_img_url', '$event_video_url')";
         if (mysqli_query($this->link, $sql)) {
             return true;
         } else {

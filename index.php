@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/DB.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Helper.php';
 
@@ -10,8 +11,14 @@ if (empty($level)) {
     $level = 0;
 }
 $tag = "a";
-if ($level > 1) {
-    $level = 1;
+
+if($level > 0){
+    $lvl_text = "level".$level;
+    $_SESSION[$lvl_text]['start'] = $start;
+    $_SESSION[$lvl_text]['end'] = $end;
+}
+if ($level > 2) {
+    $level = 2;
     $tag = 'div';
 }
 if ($level == 0) {
@@ -118,7 +125,6 @@ if ($tag == 'div') {
 <?php endif; ?>
 
 
-
 <!-- НАВИГАЦИЯ -->
 
 <div class="down">
@@ -128,11 +134,24 @@ if ($tag == 'div') {
         <div id="crumbs">
             <ul>
                 <li>
-                    <a href="index.php">История времен</a>
+                    <a href="/">История времен</a>
                 </li>
-                <li>
-                    <a onclick="window.history.back();">Назад</a>
-                </li>
+                <?php if ($level > 0): ?>
+                    <?
+                    switch($level){
+                        case '1' :
+                            $url = "/";
+                            break;
+                        default :
+                            $prev_level = $_REQUEST['level']-1;
+                            $prev_level_text = "level".$prev_level;
+                            $url = "/?start=".$_SESSION[$prev_level_text]['start']."&end=".$_SESSION[$prev_level_text]['end']."&level=".$prev_level;
+                    }
+                    ?>
+                    <li>
+                        <a href="<?=$url?>">Назад</a>
+                    </li>
+                <?php endif; ?>
 
             </ul>
         </div>
@@ -163,7 +182,10 @@ if ($tag == 'div') {
                                $i < $end;
                                $i = $i + $section_count, $k++): ?>
                         <td>
-                            <div class="timelineblock <?if ($tag !== 'a') { echo 'nolink'; }?>" style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;">
+                            <div class="timelineblock <? if ($tag !== 'a') {
+                                echo 'nolink';
+                            } ?>"
+                                 style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;">
                                 <div class="text">
                                     <? if ($tag == 'a'): ?>
                                         <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= Helper::bd_nice_number($i) . ' - ' . Helper::bd_nice_number($i + $section_count) ?></a>
