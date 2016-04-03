@@ -1,0 +1,15 @@
+.main {
+	width: 700px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 50px;
+	padding-top: 10px; 
+}
+body {
+	font-size: 11pt;
+    color: #333333;
+    font-family: helvetica;
+}
+.forbutt {
+	width: 100px;
+}
