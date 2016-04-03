@@ -50,13 +50,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 <body>
 
 <!-- Добавление -->
-<div class="plus">
-
-    <a href="admin.php">
-        <div class="vertical"></div>
-        <div class="horizontal"></div>
-    </a>
-</div>
 
 <!-- Контент -->
 
@@ -77,6 +70,7 @@ if ($tag == 'div') {
 
     <?php if (!empty($events)): ?>
         <div class="content">
+            <a class="add-link" href="admin.php">+</a>
             <?php foreach ($events as $event): ?>
                 <div class="contents" style="background-image: url(<?= $event['event_img_url'] ?>);
                     background-position: 50% 50%;
@@ -97,6 +91,7 @@ if ($tag == 'div') {
         <div class="content" style="background-image: url(images/title.png);
         background-position: 50% 50%;
         background-size: cover;">
+            <a class="add-link" href="admin.php">+</a>
             <div class="contenttext">
                 <h1>Рождение Вселенной</h1>
                 <p>По современным представлениям, наблюдаемая нами сейчас Вселенная возникла 13,7 млрд лет назад из
@@ -168,7 +163,7 @@ if ($tag == 'div') {
                             <div class="timelineblock"
                                  style="background-image: url('images/<?= ($i + 1) ?>.png'); background-position: 50% 50%; background-size: cover; ">
                                 <div class="text">
-                                    <a href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= Helper::bd_nice_number($array[$i]['start']) . ' - ' . Helper::bd_nice_number($array[$i]['end']) ?></a>
+                                    <a href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= Helper::bd_nice_number($array[$i]['start']) . ' — ' . Helper::bd_nice_number($array[$i]['end']) ?></a>
                                 </div>
 
                             </div>
@@ -188,9 +183,9 @@ if ($tag == 'div') {
                                  style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;">
                                 <div class="text">
                                     <? if ($tag == 'a'): ?>
-                                        <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= Helper::bd_nice_number($i) . ' - ' . Helper::bd_nice_number($i + $section_count) ?></a>
+                                        <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= Helper::bd_nice_number($i) . ' — ' . Helper::bd_nice_number($i + $section_count) ?></a>
                                     <? else: ?>
-                                        <a><?= $i . ' - ' . ($i + $section_count) ?></a>
+                                        <a><?= Helper::bd_nice_number($i) . ' — ' . Helper::bd_nice_number($i + $section_count) ?></a>
                                     <? endif; ?>
                                 </div>
                             </div>

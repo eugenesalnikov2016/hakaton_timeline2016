@@ -25,12 +25,12 @@ class Helper
         if (!is_numeric($n)) return false;
 
         // now filter it;
-        if ($n > 1000000000000) return round(($n / 1000000000000), 1) . ' trillion';
-        else if ($n > 1000000000) return round(($n / 1000000000), 1) . ' billion';
-        else if ($n > 1000000) return round(($n / 1000000), 1) . ' million';
-        else if ($n > 1000) return round(($n / 1000), 1) . ' thousand';
+        if (abs($n) > 1000000000) return round(($n / 1000000000), 1) . ' млрд';
+        else if (abs($n) > 1000000) return round(($n / 1000000), 1) . ' млн';
+        else if (abs($n) >= 5000) return round(($n / 1000), 1) . ' тыс.';
 
-        return number_format($n);
+
+        return number_format($n, 0, '.', '');
     }
 
 }

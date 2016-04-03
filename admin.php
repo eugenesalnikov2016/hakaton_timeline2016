@@ -17,12 +17,17 @@ $success = false;
 $checked = (isset($_REQUEST['']));
 $event_video_url = $_REQUEST['event_video_url'];
 
+$event_name = '';
+$event_text = '';
+$event_year = '';
+$event_text_short =  '';
+
 
 if (!empty($_REQUEST)) {
-    $event_name = Helper::process($_REQUEST['event_name']);
-    $event_text = Helper::process($_REQUEST['event_text']);
+    $event_name = $_REQUEST['event_name'];
+    $event_text = $_REQUEST['event_text'];
     $event_year = $_REQUEST['event_year'];
-
+    $event_text_short = $_REQUEST['event_text_short'];
 
     $success = true;
     if (empty($event_name)) {
@@ -38,19 +43,19 @@ if (!empty($_REQUEST)) {
         $success = false;
     }
     if (empty($event_text_short)) {
-        $status['event_text'] = 'Краткое описание не может быть пустым!';
+        $status['event_text_short'] = 'Краткое описание не может быть пустым!';
         $success = false;
     }
 
 
-    if (empty($event_video_url) || !preg_match('/[-а-яa-z0-9_\.]{2,}\.(рф|[a-z]{2,6})/', $event_video_url)) {
-        $status['event_video_url'] = 'Адрес видео не может быть пустым!';
+    if (!empty($event_video_url) && !preg_match('/[-а-яa-z0-9_\.]{2,}\.(рф|[a-z]{2,6})/', $event_video_url)) {
+        $status['event_video_url'] = 'Некорректный адрес видео!';
         $success = false;
     }
 
     if (!empty($_FILES['event_img_url']['name'])) {
         if (is_uploaded_file($_FILES['event_img_url']['tmp_name'])) {
-            $event_img_url = 'img/' . time() . '.jpg';
+            $event_img_url = 'images/' . time() . '.jpg';
             move_uploaded_file($_FILES['event_img_url']['tmp_name'], $event_img_url);
             $result .= 'Изображение успешно загружено';
         } else {
@@ -158,8 +163,7 @@ if (!empty($_REQUEST)) {
                 <label for="middle-label" class="text-right middle">Ccылка на видео</label>
             </div>
             <div class="small-9 columns">
-                https://<input type="text" name="event_video_url" value="<?= $event_video_url ?>"
-                               required><?= $status['event_video_url'] ?>
+                https://<input type="text" name="event_video_url" value="<?= $event_video_url ?>"><?= $status['event_video_url'] ?>
             </div>
         </div>
 
