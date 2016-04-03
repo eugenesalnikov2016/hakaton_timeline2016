@@ -1,6 +1,6 @@
 <?php
-require_once 'DB.php';
-require_once 'Helper.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/DB.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Helper.php';
 
 
 $level = $_REQUEST['level'];
@@ -126,8 +126,12 @@ if ($tag == 'div') {
 
     <div id="crumbs">
         <ul>
-            <li><a href="index.php">История времен</a></li>
-            <li><a onclick="window.history.back();">Назад</a></li>
+            <li>
+                <a href="index.php">История времен</a>
+            </li>
+            <li>
+                <a onclick="window.history.back();">Назад</a>
+            </li>
 
         </ul>
     </div>
@@ -138,13 +142,14 @@ if ($tag == 'div') {
 
             <tr>
                 <?php if ($count == 10): ?>
-                    <?php for ($i = 0; $i < $count; $i++): ?>
+                    <?php for ($i = 0;
+                               $i < $count;
+                               $i++): ?>
 
                         <td>
-                            <div class="timelineblock" style="background-image: url(images/<?= $i ?>.png);
-                                background-position: 50% 50%;
-                                background-size: cover; ">
-                                <div class="text"><a
+                            <div class="timelineblock" style="background-image: url('images/<?= $i ?>.png'); background-position: 50% 50%; background-size: cover; ">
+                                <div class="text">
+                                    <a
                                         href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= $array[$i]['start'] . ' - ' . $array[$i]['end'] ?></a>
                                 </div>
 
@@ -155,28 +160,26 @@ if ($tag == 'div') {
                 <?php endif; ?>
 
                 <?php if ($count == 5): ?>
-                <?php for ($i = $start, $k = 0;
-                $i < $end;
-                $i = $i + $section_count, $k++): ?>
-                <td>
-                    <div class="timelineblock" style="background-image: url(images/<?= $k ?>.png);
-                        background-position: 50% 50%;
-                        background-size: cover; ">
-                        <div class="text">
+                    <?php for ($i = $start, $k = 0;
+                               $i < $end;
+                               $i = $i + $section_count, $k++): ?>
+                        <td>
+                            <div class="timelineblock" style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;">
+                                <div class="text">
+                                    <? if ($tag == 'a'): ?>
+                                        <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= $i . ' - ' . ($i + $section_count) ?></a>
+                                    <? else: ?>
+                                        <div><?= $i . ' - ' . ($i + $section_count) ?></div>
+                                    <? endif; ?>
+                                </div>
+                            </div>
+                        </td>
+                    <?php endfor; ?>
+                <?php endif; ?>
+            </tr>
 
-                            <<? echo ($tag == 'a') ? 'a href="?start=' . $i . '&end=' . ($i + $section_count) . '&level=' . ($level + 1) . '"' : 'div'; ?>
-                            ><?= $i . ' - ' . ($i + $section_count) ?> </<? echo ($tag == 'a') ? 'a' : 'div'; ?>
-                        >
-
-                    </div>
+        </table>
     </div>
-    </td>
-    <?php endfor; ?>
-    <?php endif; ?>
-    </tr>
-
-    </table>
-</div>
 
 </div>
 
