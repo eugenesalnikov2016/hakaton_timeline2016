@@ -117,8 +117,8 @@ if ($tag == 'div') {
                 //
             }
 
-            echo '<div class="content">';
             if (!empty($random_numbers)) {
+                echo '<div class="content">';
                 foreach ($random_numbers as $number) {
                     $sql = "SELECT * FROM `events` WHERE `event_id` = $number";
 
@@ -142,8 +142,8 @@ if ($tag == 'div') {
 
                     }
                 }
+                echo '</div>';
             }
-            echo '</div>';
 
         }
 
@@ -153,9 +153,7 @@ if ($tag == 'div') {
         <?php if (empty($random_numbers)): ?>
 
 
-            <div class="content" style="background-image: url(images/title.png);
-        background-position: 50% 50%;
-        background-size: cover;">
+            <div class="content" style="background-image: url(images/title.png);background-position: 50% 50%;background-size: cover;">
                 <a class="add-link" href="admin.php"></a>
                 <div class="contenttext">
 
