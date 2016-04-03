@@ -33,4 +33,16 @@ class Helper
         return number_format($n, 0, '.', '');
     }
 
+    static function txt_trim($text)
+    {
+        mb_internal_encoding("UTF-8");
+        if (mb_strlen($text) > 70) {
+            $text = mb_substr($text, 0, 70);
+            $text = rtrim($text, "!,.-");
+            $text .= '…';
+            return $text;
+        }
+    }
+
+
 }

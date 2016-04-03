@@ -7,4 +7,3 @@ const PASSWORD = 'sxIrr0u4UP';
 
 const TABLE_NAME = 'events';
 
-const ADMIN_PASS = '12345';

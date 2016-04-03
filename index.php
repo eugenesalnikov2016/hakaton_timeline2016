@@ -12,8 +12,8 @@ if (empty($level)) {
 }
 $tag = "a";
 
-if($level > 0){
-    $lvl_text = "level".$level;
+if ($level > 0) {
+    $lvl_text = "level" . $level;
     $_SESSION[$lvl_text]['start'] = $start;
     $_SESSION[$lvl_text]['end'] = $end;
 }
@@ -88,18 +88,105 @@ if ($tag == 'div') {
             <?php endforeach; ?>
         </div>
     <?php else: ?>
-        <div class="content" style="background-image: url(images/title.png);
+
+        <?php
+
+        if ($level > 0 && $level < 3) {
+
+            $db = new DB;
+
+            $sql = "SELECT * FROM `events` WHERE `event_year` >= $start AND `event_year`<= $end";
+
+            $result = mysqli_query($db->link, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $numbers[] = $row['event_id'];
+            }
+            if (count($numbers > 4)) {
+                $num = 4;
+            } else {
+                $num = count($numbers);
+            }
+
+
+            if (!empty($numbers)) {
+                $random_number_keys = array_rand($numbers, $num);
+                foreach ($random_number_keys as $key) {
+                    $random_numbers[] = $numbers[$key];
+                }
+            } else {
+                //
+            }
+
+
+            if (!empty($random_numbers)) {
+                foreach ($random_numbers as $number) {
+                    $sql = "SELECT * FROM `events` WHERE `event_id` = $number";
+
+                    $result = mysqli_query($db->link, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+
+                        <div class="contents" style="background-image: url(<?= $row['event_img_url'] ?>);
+                            background-position: 50% 50%;
+                            background-size: cover;">
+                            <div class="contenttx">
+                                <div class="contenttext">
+                                    <h1><?= $row['event_name'] ?></h1>
+
+                                    <a href="index.php?id=<?= $row['event_id'] ?>">
+                                        <p><?= $row['event_text_short'] ?></p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+
+
+                    }
+                }
+            }
+
+
+        }
+
+
+        ?>
+
+        <?php if (empty($random_numbers)): ?>
+
+
+            <div class="content" style="background-image: url(images/title.png);
         background-position: 50% 50%;
         background-size: cover;">
-            <a class="add-link" href="admin.php"></a>
-            <div class="contenttext">
-                <h1>Рождение Вселенной</h1>
-                <p>По современным представлениям, наблюдаемая нами сейчас Вселенная возникла 13,7 млрд лет назад из
-                    некоторого начального сингулярного состояния и с тех пор непрерывно расширяется и охлаждается. В
-                    результате расширения и охлаждения во Вселенной произошли фазовые переходы, аналогичные конденсации
-                    жидкости из газа, но применительно к элементарным частицам.</p>
+                <a class="add-link" href="admin.php"></a>
+                <div class="contenttext">
+
+                    <?php if ($level == 0): ?>
+
+
+                        <h1>Рождение Вселенной</h1>
+                        <p>По современным представлениям, наблюдаемая нами сейчас Вселенная возникла 13,7 млрд лет назад
+                            из
+                            некоторого начального сингулярного состояния и с тех пор непрерывно расширяется и
+                            охлаждается. В
+                            результате расширения и охлаждения во Вселенной произошли фазовые переходы, аналогичные
+                            конденсации
+                            жидкости из газа, но применительно к элементарным частицам.</p>
+
+                    <?php else: ?>
+                        <h1>Рождение Вселенной</h1>
+                        <p>События на данном временном промежутке отсутствуют, но вы можете <a
+                                href="admin.php">добавить</a> событие самостоятельно</p>
+
+                    <?php endif; ?>
+
+
+                </div>
             </div>
-        </div>
+
+        <?php endif; ?>
+
+
     <?php endif; ?>
 
 <?php else: ?>
@@ -134,18 +221,18 @@ if ($tag == 'div') {
                 </li>
                 <?php if ($level > 0): ?>
                     <?
-                    switch($level){
+                    switch ($level) {
                         case '1' :
                             $url = "/";
                             break;
                         default :
-                            $prev_level = $_REQUEST['level']-1;
-                            $prev_level_text = "level".$prev_level;
-                            $url = "/?start=".$_SESSION[$prev_level_text]['start']."&end=".$_SESSION[$prev_level_text]['end']."&level=".$prev_level;
+                            $prev_level = $_REQUEST['level'] - 1;
+                            $prev_level_text = "level" . $prev_level;
+                            $url = "/?start=" . $_SESSION[$prev_level_text]['start'] . "&end=" . $_SESSION[$prev_level_text]['end'] . "&level=" . $prev_level;
                     }
                     ?>
                     <li>
-                        <a href="<?=$url?>">Назад</a>
+                        <a href="<?= $url ?>">Назад</a>
                     </li>
                 <?php endif; ?>
 

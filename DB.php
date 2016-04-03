@@ -46,5 +46,12 @@ class DB
         return $array;
     }
 
+    public function delete($id)
+    {
+        $sql = "DELETE FROM `events` WHERE `event_id` = $id";
+        mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        return true;
+    }
+
 
 }
