@@ -17,6 +17,11 @@ $success = false;
 $checked = (isset($_REQUEST['']));
 $event_video_url = $_REQUEST['event_video_url'];
 
+$event_name = '';
+$event_text = '';
+$event_year = '';
+$event_text_short =  '';
+
 
 if (!empty($_REQUEST)) {
     $event_name = $_REQUEST['event_name'];
@@ -50,7 +55,7 @@ if (!empty($_REQUEST)) {
 
     if (!empty($_FILES['event_img_url']['name'])) {
         if (is_uploaded_file($_FILES['event_img_url']['tmp_name'])) {
-            $event_img_url = 'img/' . time() . '.jpg';
+            $event_img_url = 'images/' . time() . '.jpg';
             move_uploaded_file($_FILES['event_img_url']['tmp_name'], $event_img_url);
             $result .= 'Изображение успешно загружено';
         } else {
@@ -158,8 +163,7 @@ if (!empty($_REQUEST)) {
                 <label for="middle-label" class="text-right middle">Ccылка на видео</label>
             </div>
             <div class="small-9 columns">
-                https://<input type="text" name="event_video_url" value="<?= $event_video_url ?>"
-                               required><?= $status['event_video_url'] ?>
+                https://<input type="text" name="event_video_url" value="<?= $event_video_url ?>"><?= $status['event_video_url'] ?>
             </div>
         </div>
 
