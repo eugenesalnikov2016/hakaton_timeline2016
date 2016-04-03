@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
     <link href="index.css" rel="stylesheet">
     <meta charset="utf-8">
-    <title></title>
+    <title>Timeline</title>
 </head>
 <body>
 <!-- Добавление -->
@@ -68,23 +68,34 @@ if ($tag == 'div') {
 
 
 <?php if (!empty($events)): ?>
-<?php foreach ($events as $event): ?>
+    <?php foreach ($events as $event): ?>
+        <div class="content" style="background-image: url(<?= $event['event_img_url'] ?>);
+            background-position: 50% 50%;
+            background-size: cover;">
+            <div class="contenttext">
 
-
-<div class="content" style="background-image: url(<?= $event['event_img_url'] ?>);
-								background-position: 50% 50%;
-								background-size: cover;">
-    <div class="contenttext">
-
-        <h1><?= $event['event_name'] ?></h1>
-        <p><?= $event['event_text'] ?></p>
-
-    </div>
-
-</div>
+                <h1><?= $event['event_name'] ?></h1>
+                <p><?= $event['event_text'] ?></p>
+            </div>
+        </div>
 
     <?php endforeach; ?>
+    <?php else: ?>
+    <div class="content" style="background-image: url(images/title.png);
+        background-position: 50% 50%;
+        background-size: cover;">
+        <div class="contenttext">
+
+            <h1>Рождение Вселенной</h1>
+            <p>По современным представлениям, наблюдаемая нами сейчас Вселенная возникла 13,7 млрд лет назад из некоторого начального сингулярного состояния и с тех пор непрерывно расширяется и охлаждается. В результате расширения и охлаждения во Вселенной произошли фазовые переходы, аналогичные конденсации жидкости из газа, но применительно к элементарным частицам.</p>
+
+        </div>
+
+    </div>
 <?php endif; ?>
+
+
+
 
 
 <div class="none"></div>

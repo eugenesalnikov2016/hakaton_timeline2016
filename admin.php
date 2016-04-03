@@ -26,21 +26,21 @@ if (!empty($_REQUEST)) {
 
     $success = true;
     if (empty($event_name)) {
-        $status['event_name'] = 'Name is empty!';
+        $status['event_name'] = 'Имя не может быть пустым!';
         $success = false;
     }
     if (empty($event_year)) {
-        $status['event_year'] = 'Year is empty!';
+        $status['event_year'] = 'Год не может быть пустым!';
         $success = false;
     }
     if (empty($event_text)) {
-        $status['event_text'] = 'Text is empty!';
+        $status['event_text'] = 'Текст не может быть пустым!';
         $success = false;
     }
 
 
     if (empty($event_video_url) || !preg_match('/[-а-яa-z0-9_\.]{2,}\.(рф|[a-z]{2,6})/', $event_video_url)) {
-        $status['event_video_url'] = 'Video URL is empty or incorrect!';
+        $status['event_video_url'] = 'Адрес видео не может быть пустым!';
         $success = false;
     }
 
@@ -48,9 +48,9 @@ if (!empty($_REQUEST)) {
         if (is_uploaded_file($_FILES['event_img_url']['tmp_name'])) {
             $event_img_url = 'img/' . time() . '.jpg';
             move_uploaded_file($_FILES['event_img_url']['tmp_name'], $event_img_url);
-            $result .= 'Image successfully uploaded';
+            $result .= 'Изображение успешно загружено';
         } else {
-            $result .= 'Error while uploading image';
+            $result .= 'Ошибка при загрузке изображения';
         }
     } else {
         $status['event_img_url'] = 'Image is empty';
@@ -60,9 +60,9 @@ if (!empty($_REQUEST)) {
         $db = new DB;
 
         if ($db->insert($event_name, $event_year, $event_text, $event_img_url, 'https://' . $event_video_url)) {
-            $result = 'Event successfully added';
+            $result = 'Событие успешно добавлено';
         } else {
-            $result = 'Error while addind to database';
+            $result = 'Произошла ошибка при добавлении события';
         }
     }
 
@@ -76,7 +76,7 @@ if (!empty($_REQUEST)) {
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel</title>
+    <title>Добавить событие</title>
     <link href="style.css" rel="stylesheet">
     <link href="foundation.css" rel="stylesheet">
     <script type="text/javascript" src="jquery.js"></script>
@@ -151,7 +151,9 @@ if (!empty($_REQUEST)) {
 
         <div class="text-center">
             <input type="submit" name="submit" value="Отправить" class="button" id="middle-label">
+            
         </div>
+
     </form>
 </div>
 
