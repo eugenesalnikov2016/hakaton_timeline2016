@@ -40,12 +40,29 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 ?>
 
+<?php
+
+$sql = "SELECT * FROM `sections`";
+$db = new DB;
+$result = mysqli_query($db->link, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+    $sections[] = $row;
+}
+
+foreach ($sections as $section) {
+    if ($start >= $section['start'] && $end <= $section['end'])
+        $title = $section['description'];
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <link href="index.css" rel="stylesheet">
     <meta charset="utf-8">
-    <title>Timeline</title>
+    <title>Timeline<?= ' :: ' . $title ?></title>
 </head>
 <body>
 
@@ -101,7 +118,7 @@ if ($tag == 'div') {
             while ($row = mysqli_fetch_assoc($result)) {
                 $numbers[] = $row['event_id'];
             }
-            if (count($numbers > 4)) {
+            if (count($numbers) > 4) {
                 $num = 4;
             } else {
                 $num = count($numbers);
@@ -110,8 +127,15 @@ if ($tag == 'div') {
 
             if (!empty($numbers)) {
                 $random_number_keys = array_rand($numbers, $num);
+                if (count($random_number_keys) == 1) {
+                    $temp_array = [];
+                    $temp_array[] = $random_number_keys;
+                    $random_number_keys = $temp_array;
+                }
+
                 foreach ($random_number_keys as $key) {
                     $random_numbers[] = $numbers[$key];
+
                 }
             } else {
                 //
@@ -208,7 +232,25 @@ if ($tag == 'div') {
 <?php endif; ?>
 
 
+<?php
+/*$sql = "SELECT * FROM `sections`";
+$db = new DB;
+$result = mysqli_query($db->link, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+    $sections[] = $row;
+}
+
+foreach($sections as $section){
+    if($start>=$section['start'] && $end <=$section['end'])
+        echo $section['description'];
+}*/
+
+
+?>
+
+
 <!-- НАВИГАЦИЯ -->
+
 
 <div class="down">
 
