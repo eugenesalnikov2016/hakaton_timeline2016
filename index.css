@@ -180,7 +180,7 @@ table {
 	border: solid black 1px;
 	box-sizing: border-box;
 	float: left;
-	
+    overflow: hidden;
 
 }
 .contents:hover .contenttx
