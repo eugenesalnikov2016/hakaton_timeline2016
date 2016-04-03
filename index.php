@@ -117,7 +117,7 @@ if ($tag == 'div') {
                 //
             }
 
-
+            echo '<div class="content">';
             if (!empty($random_numbers)) {
                 foreach ($random_numbers as $number) {
                     $sql = "SELECT * FROM `events` WHERE `event_id` = $number";
@@ -129,15 +129,13 @@ if ($tag == 'div') {
                         <div class="contents" style="background-image: url(<?= $row['event_img_url'] ?>);
                             background-position: 50% 50%;
                             background-size: cover;">
-                            <div class="contenttx">
+                            <a href="index.php?id=<?= $row['event_id'] ?>" class="contenttx">
                                 <div class="contenttext">
                                     <h1><?= $row['event_name'] ?></h1>
 
-                                    <a href="index.php?id=<?= $row['event_id'] ?>">
-                                        <p><?= $row['event_text_short'] ?></p>
-                                    </a>
+                                    <p><?= $row['event_text_short'] ?></p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <?php
 
@@ -145,7 +143,7 @@ if ($tag == 'div') {
                     }
                 }
             }
-
+            echo '</div>';
 
         }
 
