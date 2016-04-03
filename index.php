@@ -156,7 +156,7 @@ if ($tag == 'div') {
         <?php if (empty($random_numbers)): ?>
 
 
-            <div class="content" style="background-image: url(images/title.png);background-position: 50% 50%;background-size: cover;">
+            <div class="content" style="background-image: url(images/title.jpg);background-position: 50% 50%;background-size: cover;">
                 <a class="add-link" href="admin.php"></a>
                 <div class="contenttext">
 
@@ -248,7 +248,7 @@ if ($tag == 'div') {
 
                         <td>
                             <div class="timelineblock wow fadeInUp" data-wow-delay="<?=$i*0.05?>s"
-                                 style="background-image: url('images/<?= ($i + 1) ?>.png'); background-position: 50% 50%; background-size: cover; ">
+                                 style="background-image: url('images/<?= ($i + 1) ?>.jpg'); background-position: 50% 50%; background-size: cover; ">
                                 <div class="text">
                                     <a href="?start=<?= $array[$i]['start'] ?>&end=<?= $array[$i]['end'] ?>&level=<?= ($level + 1) ?>"><?= Helper::bd_nice_number($array[$i]['start']) . ' — ' . Helper::bd_nice_number($array[$i]['end']) ?></a>
                                 </div>
@@ -267,7 +267,7 @@ if ($tag == 'div') {
                             <div class="timelineblock wow fadeInUp <? if ($tag !== 'a') {
                                 echo 'nolink';
                             } ?>"
-                                 style="background-image: url('images/<?= $k ?>.png'); background-position: 50% 50%; background-size: cover;" data-wow-delay="<?=$k*0.05?>s">
+                                 style="background-image: url('images/<?= $k ?>.jpg'); background-position: 50% 50%; background-size: cover;" data-wow-delay="<?=$k*0.05?>s">
                                 <div class="text">
                                     <? if ($tag == 'a'): ?>
                                         <a href="?start=<?= $i ?>&end=<?= $i + $section_count ?>&level=<?= $level + 1 ?>"><?= Helper::bd_nice_number($i) . ' — ' . Helper::bd_nice_number($i + $section_count) ?></a>
